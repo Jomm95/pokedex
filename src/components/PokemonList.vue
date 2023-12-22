@@ -89,5 +89,9 @@
     display: flex;
     align-items: center;
   }
+
+  .heart {
+    margin-right: 5px;
+  }
   </style>
   

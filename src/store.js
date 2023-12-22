@@ -4,7 +4,7 @@ export default createStore({
   state() {
     return {
       statePokemonDataList: [],
-      stateFavoritePokemonList: []
+      stateFavoritePokemonList: JSON.parse(localStorage.getItem('favoritePokemonList')) || [],
     };
   },
   actions: {
@@ -30,15 +30,22 @@ export default createStore({
     },
     setFavoritePokemonList(state, list) {
       state.stateFavoritePokemonList = list;
+      localStorage.setItem('favoritePokemonList', JSON.stringify(state.stateFavoritePokemonList));
+
     },
     addFavorite(state, name) {
       state.stateFavoritePokemonList.push(name);
+      localStorage.setItem('favoritePokemonList', JSON.stringify(state.stateFavoritePokemonList));
+
     },
     deleteFavorite(state, item) {
       state.stateFavoritePokemonList.splice(item, 1);
+      localStorage.setItem('favoritePokemonList', JSON.stringify(state.stateFavoritePokemonList));
+
     },
     eraseFavoritePokemonList(state) {
       state.stateFavoritePokemonList = [];
+      localStorage.setItem('favoritePokemonList', JSON.stringify(state.stateFavoritePokemonList));
     }
   }
 });
