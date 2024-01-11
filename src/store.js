@@ -5,6 +5,8 @@ export default createStore({
     return {
       statePokemonDataList: [],
       stateFavoritePokemonList: JSON.parse(localStorage.getItem('favoritePokemonList')) || [],
+      username: null,
+      isAuthenticaded: false,
     };
   },
   actions: {
@@ -22,7 +24,27 @@ export default createStore({
     },
     eraseFavoritePokemonList(context) {
       context.commit("eraseFavoritePokemonList");
-    }
+    },
+    resetPokemonData(context) {
+      context.commit("resetPokemonData");
+    },
+
+    setUsername(context, username) {
+      context.commit("setUsername", username);
+    },
+    login({ commit }, username) {
+      // Perform authentication logic (e.g., check credentials)
+      // If authentication is successful, commit the mutation to set authentication
+      commit('setAuthentication', username);
+    },
+    logout({ commit, dispatch }) {
+      localStorage.removeItem('favoritePokemonList');
+      commit('eraseFavoritePokemonList');
+      // Dispatch the action to reset Pokémon data
+      dispatch('resetPokemonData');
+
+      commit('clearAuthentication');
+    },
   },
   mutations: {
     setPokemonData(state, list) {
@@ -46,6 +68,19 @@ export default createStore({
     eraseFavoritePokemonList(state) {
       state.stateFavoritePokemonList = [];
       localStorage.setItem('favoritePokemonList', JSON.stringify(state.stateFavoritePokemonList));
-    }
+    },
+    resetPokemonData(state) {
+      state.statePokemonDataList = [];
+    },
+    // New mutation to set the username
+    setAuthentication(state, username) {
+      state.isAuthenticated = true;
+      state.username = username;
+    },
+    // New mutation to clear the username
+    clearAuthentication(state) {
+      state.isAuthenticated = false;
+      state.username = null;
+    },
   }
 });

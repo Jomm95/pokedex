@@ -4,6 +4,16 @@
   </div>
 </template>
 
+<script>
+export default {
+  computed: {
+    isAuthenticated() {
+      return this.$store.state.isAuthenticated;
+    },
+  },
+};
+</script>
+
 <style>
 #app {
   -webkit-font-smoothing: antialiased;

@@ -10,7 +10,7 @@
         <label for="password">Password </label>
         <input id="password" class="nes-input" type="password" v-model='input.password' />
       </div>
-      <button class="btn btn-outline-dark" type="submit">
+      <button class="nes-btn" type="submit">
         Login
       </button>
 
@@ -23,18 +23,44 @@
 </template>
 
 <script>
+import { useStore } from 'vuex';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+
 export default {
   name: 'LoginView',
-  data() {
-    return {
-      input: {
-        username: '',
-        password: '',
-      },
-      output: '',
+  setup() {
+    const store = useStore();
+    const router = useRouter();
+    const input = ref({
+      username: '',
+      password: '',
+    });
+    const output = ref('');
+    const login = () => {
+      const username = input.value.username.trim();
+
+      if (username) {
+        store.dispatch('login', username);
+        // Assuming the login is successful, set the username and navigate to the homepage
+        store.dispatch('setUsername', input.value.username);
+        router.push({ name: 'home' });
+      } else {
+        output.value = 'Please enter a valid username.';
+      }
+
     }
-  },
+
+    return {
+      input,
+      output,
+      login,
+    };
+  }
 }
+
+// Assuming the login is successful, set the username and navigate to the homepage
 </script>
 
 <style scoped>

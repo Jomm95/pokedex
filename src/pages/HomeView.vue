@@ -3,6 +3,7 @@
     <div class="select-pokemon-page">
       <!-- Pokémon logo image -->
       <img src="./../assets/logo-pixel.gif" alt="pokémon" />
+      <h3 class="welcome_message">Welcome {{ $store.state.username }}!</h3>
       
       <!-- Container for Pokémon List and Summary Favorites components -->
       <div class="select-pokemon-content">
@@ -10,17 +11,20 @@
         <PokemonList
           :pokemon-list="statePokemonDataList"
           :favorites="stateFavoritePokemonList"
-          @deleteFavorite="deleteFavorite"
-          @addFavorite="addFavorite"
+          :deleteFavorite="deleteFavorite"
+          :addFavorite="addFavorite"
         />
   
         <!-- Summary Favorites component -->
-        <SummaryFavorites
-          :pokemon-list="statePokemonDataList"
-          :favorites="stateFavoritePokemonList"
-          @addFavorite="addFavorite"
-          @eraseFavoritePokemonList="eraseFavoritePokemonList"
-        />
+        <div class="right-column">
+          <SummaryFavorites
+            :pokemon-list="statePokemonDataList"
+            :favorites="stateFavoritePokemonList"
+            :addFavorite="addFavorite"
+            :eraseFavoritePokemonList="eraseFavoritePokemonList"
+          />
+          <LogoutButton/>
+        </div>
       </div>
     </div>
   </template>
@@ -29,20 +33,26 @@
   // Import necessary components and functions from Vue and Vuex
   import PokemonList from '@/components/PokemonList.vue';
   import SummaryFavorites from '@/components/SummaryFavorites.vue';
+  import LogoutButton from '@/components/LogoutButton.vue';
   import { computed, ref, onMounted } from 'vue';
   import { useStore } from 'vuex';
+  import { useRouter } from 'vue-router';
   
   export default {
     // Declare components used in this component
     components: {
       PokemonList,
       SummaryFavorites,
+      LogoutButton,
     },
     // Define the component logic using the setup function of Vue 3
     setup() {
       // Access the Vuex store
       const store = useStore();
   
+      // Access the router
+      const router = useRouter();
+
       // Reactive variables for state management
       const statePokemonDataList = computed(() => store.state.statePokemonDataList);
       const stateFavoritePokemonList = computed(() => store.state.stateFavoritePokemonList);
@@ -103,6 +113,10 @@
       text-align: left;
       display: flex;
       justify-content: space-evenly;
+    }
+
+    .welcome_message {
+      margin-bottom: 3rem;
     }
   </style>
   
