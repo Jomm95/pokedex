@@ -6,6 +6,10 @@ import LoginView from './pages/LoginView.vue';
 
 const routes = [
   {
+    path: '/',
+    redirect: '/login', // Redirect from the root path to the login page
+  },
+  {
     path: '/login',
     name: 'login',
     component: LoginView,
