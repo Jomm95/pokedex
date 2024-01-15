@@ -6,7 +6,7 @@ export default createStore({
       statePokemonDataList: [],
       stateFavoritePokemonList: JSON.parse(localStorage.getItem('favoritePokemonList')) || [],
       username: null,
-      isAuthenticaded: false,
+      isAuthenticaded: false
     };
   },
   actions: {
@@ -34,7 +34,9 @@ export default createStore({
     },
     login({ commit }, username) {
       // Perform authentication logic (e.g., check credentials)
-      // If authentication is successful, commit the mutation to set authentication
+      // If authentication is successful, set the username and store the token
+      const token = 'your_authentication_token'; // Replace with a real token
+      localStorage.setItem('authToken', token);
       commit('setAuthentication', username);
     },
     logout({ commit, dispatch }) {

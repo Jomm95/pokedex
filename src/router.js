@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from './pages/HomeView.vue';
 import Favorites from './pages/Favorites.vue';
 import LoginView from './pages/LoginView.vue';
+import { authGuard } from '../src/auth/routeGuards'; // Import the authGuard function
+
 
 
 const routes = [
@@ -32,5 +34,9 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
+// Apply the authGuard to all route changes
+router.beforeEach(authGuard);
+
 
 export default router;

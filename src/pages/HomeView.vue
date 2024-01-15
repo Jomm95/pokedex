@@ -41,9 +41,9 @@
   export default {
     // Declare components used in this component
     components: {
-      PokemonList,
-      SummaryFavorites,
-      LogoutButton,
+    PokemonList,
+    SummaryFavorites,
+    LogoutButton,
     },
     // Define the component logic using the setup function of Vue 3
     setup() {
@@ -101,27 +101,26 @@
       };
     }
   }
-  </script>
+</script>
   
-  <style scoped>
-    /* Styling specific to this component */
-    .select-pokemon-page {
-      height: 100vh;
-      text-align: center;
-      background-image: url('../assets/background-day.png');
-      background-size: cover;
-      background-position: center; /* Centers the background image */
-      background-repeat: no-repeat;
-    }
-  
-    .select-pokemon-content {
-      text-align: left;
-      display: flex;
-      justify-content: space-evenly;
-    }
+<style scoped>
+  .select-pokemon-page {
+    height: 100vh;
+    text-align: center;
+    background-image: url('../assets/background-day.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 
-    .welcome_message {
-      margin-bottom: 3rem;
-    }
-  </style>
+  .select-pokemon-content {
+    text-align: left;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .welcome_message {
+    margin-bottom: 3rem;
+  }
+</style>
   

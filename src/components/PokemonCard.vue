@@ -10,6 +10,7 @@
         Type:
         <span v-for="(typesOfPokemon, index) in pokemonData.types" :key="`type${index}`">
           {{ typesOfPokemon.type.name }}
+          <span v-if="index < pokemonData.types.length - 1"> / </span>
         </span>
       </p>
       <p>{{ pokemonDescription[0].flavor_text }}</p>
@@ -65,5 +66,9 @@ export default {
   align-items: center;
   justify-content: space-around;
   margin: 10px;
+}
+
+.pokemon-card__text p:nth-child(odd) {
+  text-transform: capitalize;
 }
 </style>

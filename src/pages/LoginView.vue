@@ -1,23 +1,25 @@
 <template>
-  <div class='login-container'>
-    <p>Who dares to open this Pokédex? Are you a trainer?</p>
-    <form class="login-form" id="login-form" @submit.prevent='login' ref='loginForm'>
-      <div class="nes-field">
-        <label for="username">Your Name </label>
-        <input id="username" class="nes-input" type="text" v-model='input.username' />
-      </div>
-      <div class="nes-field">
-        <label for="password">Password </label>
-        <input id="password" class="nes-input" type="password" v-model='input.password' />
-      </div>
-      <button class="nes-btn" type="submit">
-        Login
-      </button>
+  <div class="login-wrapper">
+    <div class='login-container'>
+      <h2>Who dares to open this Pokédex? Are you a trainer?</h2>
+      <form class="login-form" id="login-form" @submit.prevent='login' ref='loginForm'>
+        <div class="nes-field">
+          <label for="username">Your Name </label>
+          <input id="username" class="nes-input" type="text" v-model='input.username' required />
+        </div>
+        <div class="nes-field">
+          <label for="password">Password </label>
+          <input id="password" class="nes-input" type="password" v-model='input.password' required />
+        </div>
+        <button class="nes-btn" type="submit">
+          Login
+        </button>
 
-      <p>Username is {{ input.username }}</p>
-      <p>Password is {{ input.password }}</p>
-    </form>
-    <h3>Output: {{ output }}</h3>
+        <!-- <p>Username is {{ input.username }}</p>
+        <p>Password is {{ input.password }}</p> -->
+      </form>
+      <h3>{{ output }}</h3>
+    </div>
   </div>
 
 </template>
@@ -65,12 +67,21 @@ export default {
 
 <style scoped>
 
-.login-container {
-  height: 100vh;
+.login-wrapper {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* background-image: url(../assets/rayquaza-emerald-2.webp); */
+  background-image: url(../assets/wyy5o7rqhp4a1.gif);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.login-container {
+  margin-top: 53vh;
 }
 .login-form {
   display: flex;
