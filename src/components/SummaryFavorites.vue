@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="chosen-pokemon-container">
     <h2>Your chosen favorite Pokémon</h2>
     <p v-if="favoriteListLength < maximumList">
       I can't choose, help me <button class="nes-btn is-success" @click="startInterval">Pick Pokémon</button>
@@ -18,7 +18,7 @@
       Do you want to <button class="nes-btn is-error" @click="emptyFavoritePokemonList">Delete</button> the list?
     </p>
     <router-link v-if="favoriteListLength > 0" class="nes-btn" to="/favorites">
-      View your favorite Pokémon
+      View your favorites Pokémon
     </router-link>
   </div>
 </template>
@@ -84,6 +84,11 @@ export default {
 </script>
 
 <style scoped>
+
+/* #chosen-pokemon-container {
+  max-height: 50vh;
+  overflow-y: auto;
+} */
 .chosen-pokemon {
   text-transform: capitalize;
 }

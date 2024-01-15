@@ -1,28 +1,30 @@
 <template>
-  <div class="pokemon-list">
-    <h2>Choose your Pokémon</h2>
-    <p v-for="(pokemon, index) in pokemonList" :key="pokemon.url" class="pokemon-list-item">
-      {{ index + 1 + '. ' }}
-      <i v-if="favorites.includes(pokemon.name)" class="nes-icon is-small heart" />
-      <i v-else class="nes-icon is-small heart is-empty" />
-      {{ pokemon.name }}
-      <img :key="pokemon.url" :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`" alt="Pokemon" />
-      <a
-        v-show="!favorites.includes(pokemon.name)"
-        class="nes-btn"
-        :class="{ 'is-disabled': favoriteListLength === 10 }"
-        @click="setFavorites(pokemon.name); playPokemonCry(index + 1)"
-      >
-        Pick me!
-      </a>
-      <button
-        v-show="favorites.includes(pokemon.name)"
-        class="nes-btn is-error"
-        @click="setFavorites(pokemon.name); playPokemonCry(index + 1)"
-      >
-        Remove
-      </button>
-    </p>
+  <div class="pokemon-list-container">
+    <h2 class="title">Choose your Pokémon</h2>
+    <div class="pokemon-list">
+      <p v-for="(pokemon, index) in pokemonList" :key="pokemon.url" class="pokemon-list-item">
+        {{ index + 1 + '. ' }}
+        <i v-if="favorites.includes(pokemon.name)" class="nes-icon is-small heart" />
+        <i v-else class="nes-icon is-small heart is-empty" />
+        {{ pokemon.name }}
+        <img :key="pokemon.url" :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`" alt="Pokemon" />
+        <a
+          v-show="!favorites.includes(pokemon.name)"
+          class="nes-btn"
+          :class="{ 'is-disabled': favoriteListLength === 10 }"
+          @click="setFavorites(pokemon.name); playPokemonCry(index + 1)"
+        >
+          Pick me!
+        </a>
+        <button
+          v-show="favorites.includes(pokemon.name)"
+          class="nes-btn is-error"
+          @click="setFavorites(pokemon.name); playPokemonCry(index + 1)"
+        >
+          Remove
+        </button>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -68,10 +70,6 @@ export default {
       audio.play();
     };
 
-    onMounted(() => {
-      // Additional setup logic can be placed here if needed
-    });
-
     return {
       favoriteListLength,
       setFavorites,
@@ -82,13 +80,47 @@ export default {
 </script>
 
 <style scoped>
+
+
+.pokemon-list-container {
+  max-height: 52vh;
+  position: relative;
+  overflow-y: auto; 
+}
+.title {
+  position: sticky;
+  top: 0;
+  z-index: 1; /* Ensure the title is on top of the scrolling content */
+  background-color: #79C9FA;
+  padding-bottom: 10px;
+}
 .pokemon-list {
   text-transform: capitalize;
+  padding-top:10px;
 }
 
 .pokemon-list-item {
   display: flex;
   align-items: center;
+}
+
+.pokemon-list-container::-webkit-scrollbar {
+  width: 0px; /* Set the width of the scrollbar */
+}
+
+.pokemon-list-container::-webkit-scrollbar-thumb {
+  background-color: #4caf50;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+/* Hover effect for the scrollbar thumb */
+.pokemon-list-container::-webkit-scrollbar-thumb:hover {
+  background-color: #45a049;
+}
+
+.pokemon-list-container::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  transition: background-color 0.3s ease;
 }
 
 .heart {

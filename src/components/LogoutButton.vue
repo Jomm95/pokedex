@@ -17,7 +17,7 @@ export default {
             //reset pokemons lists
             store.dispatch('resetPokemonData');
             store.dispatch('eraseFavoritePokemonList');
-            
+
             // Clear the username and navigate to the login view
             store.dispatch('clearUsername');
             // Assuming you have a login route named 'Login', replace it with the actual name of your login route
@@ -32,9 +32,11 @@ export default {
 
 <style scoped>
 .logout-button {
+  position:absolute;
   display: block;
-  margin: 7rem auto;
-  padding: 3rem 3rem;
+  padding: 1rem 1rem;
+  right: 1rem;
+  top: 2rem;
 }
 </style>
   

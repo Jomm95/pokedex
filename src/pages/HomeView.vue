@@ -1,6 +1,7 @@
 <template>
     <!-- Main container for the component -->
     <div class="select-pokemon-page">
+      <LogoutButton/>
       <!-- Pokémon logo image -->
       <img src="./../assets/logo-pixel.gif" alt="pokémon" />
       <h3 class="welcome_message">Welcome {{ $store.state.username }}!</h3>
@@ -23,7 +24,6 @@
             :addFavorite="addFavorite"
             :eraseFavoritePokemonList="eraseFavoritePokemonList"
           />
-          <LogoutButton/>
         </div>
       </div>
     </div>
@@ -106,7 +106,12 @@
   <style scoped>
     /* Styling specific to this component */
     .select-pokemon-page {
+      height: 100vh;
       text-align: center;
+      background-image: url('../assets/background-day.png');
+      background-size: cover;
+      background-position: center; /* Centers the background image */
+      background-repeat: no-repeat;
     }
   
     .select-pokemon-content {

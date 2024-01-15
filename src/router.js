@@ -18,11 +18,13 @@ const routes = [
     path: '/home',
     name: 'home',
     component: HomeView,
+    meta: { requiresAuth: true },
   },
   {
     path: '/favorites',
     name: 'favorites',
     component: Favorites,
+    meta: { requiresAuth: true },
   },
 ];
 

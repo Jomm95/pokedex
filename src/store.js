@@ -82,5 +82,9 @@ export default createStore({
       state.isAuthenticated = false;
       state.username = null;
     },
-  }
+  },
+  getters: {
+    // Getter to check if the user is authenticated
+    isAuthenticated: (state) => state.isAuthenticated,
+  },
 });
