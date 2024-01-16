@@ -1,30 +1,34 @@
 <template>
-  <div class="pokemon-list-container">
-    <h2 class="title">Choose your Pokémon</h2>
-    <div class="pokemon-list">
-      <p v-for="(pokemon, index) in pokemonList" :key="pokemon.url" class="pokemon-list-item">
-        {{ index + 1 + '. ' }}
-        <i v-if="favorites.includes(pokemon.name)" class="nes-icon is-small heart" />
-        <i v-else class="nes-icon is-small heart is-empty" />
-        {{ pokemon.name }}
-        <img :key="pokemon.url" :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`" alt="Pokemon" />
-        <a
-          v-show="!favorites.includes(pokemon.name)"
-          class="nes-btn"
-          :class="{ 'is-disabled': favoriteListLength === 10 }"
-          @click="setFavorites(pokemon.name); playPokemonCry(index + 1)"
-        >
-          Pick me!
-        </a>
-        <button
-          v-show="favorites.includes(pokemon.name)"
-          class="nes-btn is-error"
-          @click="setFavorites(pokemon.name); playPokemonCry(index + 1)"
-        >
-          Remove
-        </button>
-      </p>
+  <div class="left-column">
+    <h3 class="title">Choose your Pokémon</h3>
+    <div class="nes-container is-rounded transparent-bg">
+      <div class="pokemon-list-container">
+        <p v-for="(pokemon, index) in pokemonList" :key="pokemon.url" class="pokemon-list-item">
+          {{ index + 1 + '. ' }}
+          <i v-if="favorites.includes(pokemon.name)" class="nes-icon is-small heart" />
+          <i v-else class="nes-icon is-small heart is-empty" />
+          {{ pokemon.name }}
+          <img :key="pokemon.url" :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`" alt="Pokemon" />
+          <a
+            v-show="!favorites.includes(pokemon.name)"
+            class="nes-btn"
+            :class="{ 'is-disabled': favoriteListLength === 10 }"
+            @click="setFavorites(pokemon.name); playPokemonCry(index + 1)"
+          >
+            Pick me!
+          </a>
+          <button
+            v-show="favorites.includes(pokemon.name)"
+            class="nes-btn is-error"
+            @click="setFavorites(pokemon.name); playPokemonCry(index + 1)"
+          >
+            Remove
+          </button>
+        </p>
+      </div>
     </div>
+
+
   </div>
 </template>
 
@@ -81,22 +85,14 @@ export default {
 
 <style scoped>
 
+.transparent-bg {
+  background-color: rgba(248, 249, 250, 0.3);
+}
 
 .pokemon-list-container {
   max-height: 52vh;
-  position: relative;
-  overflow-y: auto; 
-}
-.title {
-  position: sticky;
-  top: 0;
-  z-index: 1; /* Ensure the title is on top of the scrolling content */
-  background-color: #79C9FA;
-  padding-bottom: 10px;
-}
-.pokemon-list {
   text-transform: capitalize;
-  padding-top:10px;
+  overflow-y: auto; 
 }
 
 .pokemon-list-item {
@@ -125,5 +121,12 @@ export default {
 
 .heart {
   margin-right: 5px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .left-column {
+    width:80%;
+    margin: auto;
+  }
 }
 </style>

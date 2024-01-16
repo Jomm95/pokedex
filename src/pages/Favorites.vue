@@ -63,5 +63,31 @@ export default {
   margin: 15px;
   border-radius: 0px;
 }
+
+/* @media only screen and (min-width: 769px) and (max-width: 1024px) {
+
+
+  .favorites-container {
+    width:100vw;
+  }
+  .overview-favorite-pokemon {
+    grid-template-columns: 1fr;
+    width:60%;
+    margin:auto;
+  }
+} */
+
+@media only screen and (max-width: 1024px) {
+
+  .favorites-container {
+    width: 100vw;
+  }
+
+  .overview-favorite-pokemon {
+    grid-template-columns: 1fr; /* Change to a single column layout for smaller devices */
+    width: 70%;
+    margin: auto;
+  }
+}
 </style>
   

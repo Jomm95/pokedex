@@ -5,7 +5,6 @@ import LoginView from './pages/LoginView.vue';
 import { authGuard } from '../src/auth/routeGuards'; // Import the authGuard function
 
 
-
 const routes = [
   {
     path: '/',

@@ -17,14 +17,13 @@
         />
   
         <!-- Summary Favorites component -->
-        <div class="right-column">
-          <SummaryFavorites
-            :pokemon-list="statePokemonDataList"
-            :favorites="stateFavoritePokemonList"
-            :addFavorite="addFavorite"
-            :eraseFavoritePokemonList="eraseFavoritePokemonList"
-          />
-        </div>
+        <SummaryFavorites
+          :pokemon-list="statePokemonDataList"
+          :favorites="stateFavoritePokemonList"
+          :addFavorite="addFavorite"
+          :eraseFavoritePokemonList="eraseFavoritePokemonList"
+        />
+
       </div>
     </div>
   </template>
@@ -104,23 +103,31 @@
 </script>
   
 <style scoped>
-  .select-pokemon-page {
-    height: 100vh;
-    text-align: center;
-    background-image: url('../assets/background-day.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
+.select-pokemon-page {
+  position: relative;
+  text-align: center;
+  background-image: url('../assets/background-day.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
 
+.select-pokemon-content {
+  text-align: left;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.welcome_message {
+  padding-bottom: 2rem;
+}
+
+@media only screen and (max-width: 1024px) {
   .select-pokemon-content {
-    text-align: left;
-    display: flex;
-    justify-content: space-evenly;
+    flex-direction: column; /* Change to a single column layout for medium devices */
   }
+}
 
-  .welcome_message {
-    margin-bottom: 3rem;
-  }
 </style>
   
