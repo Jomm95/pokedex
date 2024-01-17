@@ -78,6 +78,15 @@ export default {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  font-size: 0.8rem;
+}
+
+h2 {
+  background-color: rgba(248, 249, 250, 0.5);
+  border-radius: 20px;
+  padding: 2rem 1rem;
+  margin: 2rem 1rem;
+
 }
 
 .login-container {
@@ -87,11 +96,42 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: rgba(248, 249, 250, 0.5);
+  margin: 2rem 1rem;
+  border-radius: 20px;
+  padding-bottom: 1rem;
 }
 
 .nes-field {
   display: flex;
   flex-direction: column;
   margin: 1rem 0;
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+  h2 {
+    font-size: 0.7rem;
+  }
+  .login-form {
+    font-size: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+
+  h2 {
+    font-size: 0.7rem;
+  }
+  .login-form {
+    font-size: 0.5rem;
+  }
+  .nes-field {
+    width:50%;
+  }
 }
 </style>

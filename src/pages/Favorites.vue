@@ -52,6 +52,7 @@ export default {
 .overview-favorite-pokemon {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  justify-content: center;
 }
 
 .overview-favorite-pokemon__title {
@@ -87,6 +88,23 @@ export default {
     grid-template-columns: 1fr; /* Change to a single column layout for smaller devices */
     width: 70%;
     margin: auto;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+
+  .favorites-container {
+    font-size: 0.55rem;
+  }
+  .overview-favorite-pokemon {
+    grid-template-columns: 1fr; /* Change to a single column layout for smaller devices */
+    width: 50%;
+    margin: auto;
+  }
+  .pokemon-card-background {
+    /* Further adjust the size of the cards for screens up to 768px */
+    width: 80%;
+    margin: 10px auto;
   }
 }
 </style>

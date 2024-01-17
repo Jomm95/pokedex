@@ -94,7 +94,6 @@ export default {
 
 <style scoped>
 
-
 .transparent-bg {
   background-color: rgba(248, 249, 250, 0.3);
 }
@@ -134,6 +133,15 @@ export default {
 }
 
 @media only screen and (max-width: 1024px) {
+  .right-column {
+    width:80%;
+    margin: auto;
+    margin-top:25px;
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 480px) {
   .right-column {
     width:80%;
     margin: auto;

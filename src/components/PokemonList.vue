@@ -9,14 +9,14 @@
           <i v-else class="nes-icon is-small heart is-empty" />
           {{ pokemon.name }}
           <img :key="pokemon.url" :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`" alt="Pokemon" />
-          <a
+          <button
             v-show="!favorites.includes(pokemon.name)"
             class="nes-btn"
             :class="{ 'is-disabled': favoriteListLength === 10 }"
             @click="setFavorites(pokemon.name); playPokemonCry(index + 1)"
           >
             Pick me!
-          </a>
+          </button>
           <button
             v-show="favorites.includes(pokemon.name)"
             class="nes-btn is-error"
@@ -126,7 +126,32 @@ export default {
 @media only screen and (max-width: 1024px) {
   .left-column {
     width:80%;
-    margin: auto;
+    margin:auto;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .pokemon-list-item img {
+    width: 60px; /* Adjust the width of the Pokémon image for smaller screens */
+    height: 60px; /* Adjust the height of the Pokémon image for smaller screens */
+  }
+  .pokemon-list-item button {
+    width: 25%; /* Adjust the width of the Pokémon image for smaller screens */
+    height: 20%; /* Adjust the height of the Pokémon image for smaller screens */
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .pokemon-list-item img {
+    margin:0;
+    width: 40px; /* Adjust the width of the Pokémon image for smaller screens */
+    height: 40px; /* Adjust the height of the Pokémon image for smaller screens */
+  }
+  .pokemon-list-item button {
+    width: 50%; /* Adjust the width of the Pokémon image for smaller screens */
+    height: 20%; /* Adjust the height of the Pokémon image for smaller screens */
+  }
+}
+
+
 </style>

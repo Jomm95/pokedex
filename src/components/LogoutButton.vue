@@ -53,12 +53,37 @@ export default {
   }
   .logout-mobile-button {
     display: block;
-    position:absolute;
+    position: absolute;
     display: block;
-    right: 1rem;
+    width:5rem;
+    height: 5rem;
+    right: 2rem;
     top: 2rem;
     font-size: 2rem;
+    text-align: center;
+
   }
 }
+
+@media only screen and (max-width: 768px) {
+
+  .logout-mobile-button {
+    display: block;
+    position: absolute;
+    display: block;
+    width:2rem;
+    height: 2rem;
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  i {
+      display: block;
+      margin: 0px 0px 0px -5px;
+    }
+}
+
 </style>
   

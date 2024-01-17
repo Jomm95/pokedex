@@ -129,5 +129,22 @@
   }
 }
 
+@media only screen and (max-width: 768px) {
+
+  .select-pokemon-page {
+    font-size: 0.7rem;
+  }
+  .select-pokemon-page img {
+    justify-content: center;
+    width:70%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .select-pokemon-page {
+    font-size: 0.4rem;
+  }
+}
+
 </style>
   
