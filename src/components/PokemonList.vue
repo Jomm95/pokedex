@@ -13,14 +13,14 @@
             v-show="!favorites.includes(pokemon.name)"
             class="nes-btn"
             :class="{ 'is-disabled': favoriteListLength === 10 }"
-            @click="setFavorites(pokemon.name); playPokemonCry(index + 1)"
+            @click="setFavorites(pokemon.name)"
           >
             Pick me!
           </button>
           <button
             v-show="favorites.includes(pokemon.name)"
             class="nes-btn is-error"
-            @click="setFavorites(pokemon.name); playPokemonCry(index + 1)"
+            @click="setFavorites(pokemon.name)"
           >
             Remove
           </button>
@@ -69,15 +69,9 @@ export default {
       }
     };
 
-    const playPokemonCry = (pokemonId) => {
-      const audio = new Audio(`https://pokemoncries.com/cries-old/${pokemonId}.mp3`);
-      audio.play();
-    };
-
     return {
       favoriteListLength,
       setFavorites,
-      playPokemonCry,
     };
   },
 };
